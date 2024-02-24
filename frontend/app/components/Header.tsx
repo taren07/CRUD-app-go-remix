@@ -1,7 +1,7 @@
 import { Menu, Group, Center, Burger, Container } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
 import { IconChevronDown } from "@tabler/icons-react";
-import classes from "./HeaderMenu.module.css";
+import classes from "../styles/Header.module.css";
 
 const links = [
 	{ link: "/about", label: "Features" },
@@ -28,7 +28,7 @@ const links = [
 	},
 ];
 
-export function HeaderMenu() {
+export function Header() {
 	const [opened, { toggle }] = useDisclosure(false);
 
 	const items = links.map((link) => {

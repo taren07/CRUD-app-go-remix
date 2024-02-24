@@ -4,7 +4,7 @@ import {
 	IconBrandYoutube,
 	IconBrandInstagram,
 } from "@tabler/icons-react";
-import classes from "./FooterCentered.module.css";
+import classes from "../styles/Footer.module.css";
 
 const links = [
 	{ link: "#", label: "Contact" },
@@ -14,7 +14,7 @@ const links = [
 	{ link: "#", label: "Careers" },
 ];
 
-export function FooterCentered() {
+export function Footer() {
 	const items = links.map((link) => (
 		<Anchor
 			c="dimmed"
