@@ -6,7 +6,7 @@ import (
 )
 
 type ICommentUsecase interface {
-	CreateComment(comment model.Comment) (model.CommentResponse, error)
+	GetAllComments(userId uint) ([]model.CommentResponse, error)
 }
 
 type commentUsecase struct {
