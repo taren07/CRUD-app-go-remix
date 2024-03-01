@@ -1,8 +1,6 @@
-version: "3"
+version: '3.8'
 services:
-
   golang:
-    container_name: golang
     env_file:
       - ./backend/app/.env
     build:
@@ -10,36 +8,25 @@ services:
       dockerfile: Dockerfile.backend
     tty: true
     ports:
-      - "8080:8080"
+        - "8080:8080"
     depends_on:
-      - db
+        - db
     volumes:
-      - ./backend/app:/go/src/app
-    command: sh -c 'go mod tidy && GO_ENV=dev air'
+        - ./backend/app:/go/src/app
+    command: sh -c 'go mod tidy && GO_ENV=dev air && GO_ENV=dev go run main.go'
     networks:
-      - network1
-
+        - golang_network
   db:
-    container_name: postgres
-    image: postgres
-    tty: true
+    image: postgres:15.1-alpine
     ports:
-      - "5432:5432"
-    volumes:
-      - postgres_volume:/var/lib/postgresql/data
+      - 5432:5432
     environment:
       POSTGRES_USER: test
       POSTGRES_PASSWORD: test
       POSTGRES_DB: test
-      TZ: "Asia/Tokyo"
     restart: always
     networks:
-      - network1
-
-volumes:
-  postgres_volume:
-    name: postgres_volume
+      - golang_network
 
 networks:
-  network1:
-    # external: true
+    golang_network:
