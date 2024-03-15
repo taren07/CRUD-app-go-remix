@@ -17,6 +17,8 @@ func NewUserValidator() IUserValidator {
 	return &userValidator{}
 }
 
+
+
 func (uv *userValidator) UserValidate(user model.User) error {
 	return validation.ValidateStruct(&user,
 		validation.Field(
